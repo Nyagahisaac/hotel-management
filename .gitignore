@@ -1,2 +1,5 @@
 /virtual
 virtual
+.env
+hltManager/__pycache__/
+hltManager/migrations/
