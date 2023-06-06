@@ -1,0 +1,253 @@
+{%extends 'base/base.html'%}
+{% load bootstrap4 %}
+{% block header %}
+
+<style>
+    .col-xl-4 {
+        padding: 1.5%;
+    }
+
+    .text-p {
+        color: rgba(6, 124, 75, 1);
+        font-weight: 600;
+        font-size: 20px !important;
+    }
+
+    .card {
+        max-height: 100% !important;
+    }
+
+    .border-0 {
+        padding: 10px;
+    }
+
+    .branch-head {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+
+    .card:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    a {
+        text-decoration: none !important;
+        color: black !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="header-top" style="font-weight: 600;margin-top: 7%;margin-bottom:3%;">
+        {% if messages%}
+        <div id="message-section" style="padding: 10px 10px 0px 10px !important">
+            {% for message in messages %}
+            <div class="alert alert-info alert-callout">
+                <i class="fas fa-exclamation-triangle"></i> {{ message }}
+
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <p style="font-size:20px"><b><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</b></p>
+    </div>
+    <div class="row">
+        <a href="" class="col-xl-3 col-md-6 border-0">
+            <div class="col-md-12 card">
+                <div class="card-body">
+
+                    <div class="lead">
+                        <span class="btn btn-default"
+                            style="border-radius: 50%;background-color:rgba(6, 124, 75, 0.2);"> <i
+                                class="mdi mdi-account-multiple mdi-24px"></i></span>
+
+                        <h1 class="float-right text-p" id="account-count">0</h1>
+                    </div>
+                    <h6 class="mt-5">Bookings</h6>
+
+                </div>
+
+            </div>
+        </a>
+        <a href="" class="col-xl-3 col-md-6  border-0">
+            <div class="col-md-12 card">
+                <div class="card-body">
+
+                    <div class="lead">
+                        <span class="btn btn-default"
+                            style="border-radius: 50%;background-color:rgba(6, 124, 75, 0.2);"> <i
+                                class="mdi mdi-file-tree-outline mdi-24px"></i></span>
+
+                        <h1 class="float-right text-p" id="event-count">0</h1>
+                    </div>
+                    <h6 class="mt-5">Available Rooms</h6>
+
+                </div>
+            </div>
+        </a>
+        <a href="" class="col-xl-3 col-md-6  border-0">
+            <div class="col-md-12 card">
+
+                <div class="card-body">
+
+                    <div class="lead">
+                        <span class="btn btn-default"
+                            style="border-radius: 50%;background-color:rgba(6, 124, 75, 0.2);"> <i
+                                class="mdi mdi-bank-transfer-out mdi-24px"></i></span>
+
+                        <h1 class="float-right text-p" id="types-count">0</h1>
+                    </div>
+                    <h6 class="mt-5">Expenses</h6>
+
+                </div>
+            </div>
+        </a>
+        <a href="/sacco/profile" class="col-xl-3 col-md-6  border-0">
+            <div class="col-sm-12 card" style="background-color: rgba(6, 124, 75, 0.6);">
+
+                <div class="card-body">
+
+                    <div class="lead">
+                        <span class="btn btn-default" style="border-radius: 50%;background-color:white;"> <i
+                                class="mdi mdi-file-chart-outline mdi-24px"></i></span>
+
+                        <h1 class="float-right text-p" id="types-count">0</h1>
+                    </div>
+                    <h6 class="mt-5">Invoices</h6>
+
+                </div>
+            </div>
+        </a>
+
+    </div>
+    <div class="other mt-5">
+        <div class="branches-content" style="display: flex;">
+            <div class="part-one" style="width: 40%;height:inherit !important">
+                <a href="" class="branches card" style="background-color: rgba(245, 129, 30, 0.3);">
+                    <div class="card-body p-4">
+                        <div class="">
+                            <span class="float-right"><i class="mdi mdi-file-tree-outline mdi-48px"
+                                    style="color: rgba(245, 129, 30, 1);"></i></span>
+                            <span class="branch-head" style="color: rgba(232, 69, 69, 1);">Greenbrier Customers</span>
+                        </div>
+                        <br>
+                        <span style="color: rgba(232, 69, 69, 0.8);font-size: 17px;">
+                            View, add, edit and delete Customer Records <br> in Greenbrier
+                        </span>
+                    </div>
+
+                </a>
+                <a href="" class="service-product card mt-5"
+                    style="background-color: rgba(6, 124, 75, 1);color: white;">
+                    <div class="card-body p-4">
+                        <div class="">
+
+                            <span class="float-right"><i class="mdi mdi-cogs mdi-48px"></i></span>
+                            <span class="branch-head"> Greenbrier Packages <br> and Services</span>
+                        </div>
+                        <span style="font-size: 17px;">
+                            View, add, edit and delete the various Packages and services
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="in-large-view" style="width: 5%;"></div>
+            <div class="part-two " style="width: 55%;">
+                <div class="table-responsive p-4" style="background-color: white;width: 100%;min-height: 100%;">
+                    <h6 class="">
+                        <span style="font-weight: 550 !important;font-size: 18px;">Top Selected RoomTypes</span>
+                    </h6>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <div class="bookings-add">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="table-responsive p-2">
+                        <table class="table table-condensed table-sm table-hover table-stripped table-bordered">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Package</th>
+                                    <th>Status</th>
+                                    <th>Room Type</th>
+                                    <th>Mobile</th>
+                                    <th>Check In</th>
+                                    <th>No Of Days</th>
+                                    <th>Checkout</th>
+                                    <th>Payment</th>
+                                    <th>Invoice</th>
+        
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $(() => {
+        const ctx = document.getElementById('myChart');
+        const labels = ['Type 1', 'Type 2', 'Type 3', 'Type 4', 'Type 5', 'Type 6', 'Type 7'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Room Types By Bookings Ratio',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+
+
+</script>
+
+{% endblock %}

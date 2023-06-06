@@ -1,0 +1,1375 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'select2/select2.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/material-design/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+
+    {% if title %}
+    <title>The Greenbrier - {{title}}</title>
+    {% else %}
+    <title>The Greenbrier</title>
+    {% endif %}
+
+    {% block header %}
+
+
+    {% endblock %}
+    <style type="text/css">
+        html,
+        body {
+            /* background-color: #2a2a2a; */
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+
+
+
+
+        .select2-container .select2-choice,
+        .select2-container .select2-choices {
+            margin-left: 4px !important;
+        }
+
+        button.dt-button,
+        div.dt-button,
+        a.dt-button {
+            padding: 2px 6px !important;
+        }
+
+        .bell {
+            display: block;
+            -webkit-animation: ring 4s .01s ease-in-out infinite;
+            -webkit-transform-origin: 50% 4px;
+            -moz-animation: ring 4s .01s ease-in-out infinite;
+            -moz-transform-origin: 50% 4px;
+            animation: ring 4s .01s ease-in-out infinite;
+            transform-origin: 50% 4px;
+        }
+
+        @-webkit-keyframes ring {
+            0% {
+                -webkit-transform: rotateZ(0);
+            }
+
+            1% {
+                -webkit-transform: rotateZ(30deg);
+            }
+
+            3% {
+                -webkit-transform: rotateZ(-28deg);
+            }
+
+            5% {
+                -webkit-transform: rotateZ(34deg);
+            }
+
+            7% {
+                -webkit-transform: rotateZ(-32deg);
+            }
+
+            9% {
+                -webkit-transform: rotateZ(30deg);
+            }
+
+            11% {
+                -webkit-transform: rotateZ(-28deg);
+            }
+
+            13% {
+                -webkit-transform: rotateZ(26deg);
+            }
+
+            15% {
+                -webkit-transform: rotateZ(-24deg);
+            }
+
+            17% {
+                -webkit-transform: rotateZ(22deg);
+            }
+
+            19% {
+                -webkit-transform: rotateZ(-20deg);
+            }
+
+            21% {
+                -webkit-transform: rotateZ(18deg);
+            }
+
+            23% {
+                -webkit-transform: rotateZ(-16deg);
+            }
+
+            25% {
+                -webkit-transform: rotateZ(14deg);
+            }
+
+            27% {
+                -webkit-transform: rotateZ(-12deg);
+            }
+
+            29% {
+                -webkit-transform: rotateZ(10deg);
+            }
+
+            31% {
+                -webkit-transform: rotateZ(-8deg);
+            }
+
+            33% {
+                -webkit-transform: rotateZ(6deg);
+            }
+
+            35% {
+                -webkit-transform: rotateZ(-4deg);
+            }
+
+            37% {
+                -webkit-transform: rotateZ(2deg);
+            }
+
+            39% {
+                -webkit-transform: rotateZ(-1deg);
+            }
+
+            41% {
+                -webkit-transform: rotateZ(1deg);
+            }
+
+            43% {
+                -webkit-transform: rotateZ(0);
+            }
+
+            100% {
+                -webkit-transform: rotateZ(0);
+            }
+        }
+
+        @-moz-keyframes ring {
+            0% {
+                -moz-transform: rotate(0);
+            }
+
+            1% {
+                -moz-transform: rotate(30deg);
+            }
+
+            3% {
+                -moz-transform: rotate(-28deg);
+            }
+
+            5% {
+                -moz-transform: rotate(34deg);
+            }
+
+            7% {
+                -moz-transform: rotate(-32deg);
+            }
+
+            9% {
+                -moz-transform: rotate(30deg);
+            }
+
+            11% {
+                -moz-transform: rotate(-28deg);
+            }
+
+            13% {
+                -moz-transform: rotate(26deg);
+            }
+
+            15% {
+                -moz-transform: rotate(-24deg);
+            }
+
+            17% {
+                -moz-transform: rotate(22deg);
+            }
+
+            19% {
+                -moz-transform: rotate(-20deg);
+            }
+
+            21% {
+                -moz-transform: rotate(18deg);
+            }
+
+            23% {
+                -moz-transform: rotate(-16deg);
+            }
+
+            25% {
+                -moz-transform: rotate(14deg);
+            }
+
+            27% {
+                -moz-transform: rotate(-12deg);
+            }
+
+            29% {
+                -moz-transform: rotate(10deg);
+            }
+
+            31% {
+                -moz-transform: rotate(-8deg);
+            }
+
+            33% {
+                -moz-transform: rotate(6deg);
+            }
+
+            35% {
+                -moz-transform: rotate(-4deg);
+            }
+
+            37% {
+                -moz-transform: rotate(2deg);
+            }
+
+            39% {
+                -moz-transform: rotate(-1deg);
+            }
+
+            41% {
+                -moz-transform: rotate(1deg);
+            }
+
+            43% {
+                -moz-transform: rotate(0);
+            }
+
+            100% {
+                -moz-transform: rotate(0);
+            }
+        }
+
+        @keyframes ring {
+            0% {
+                transform: rotate(0);
+            }
+
+            1% {
+                transform: rotate(30deg);
+            }
+
+            3% {
+                transform: rotate(-28deg);
+            }
+
+            5% {
+                transform: rotate(34deg);
+            }
+
+            7% {
+                transform: rotate(-32deg);
+            }
+
+            9% {
+                transform: rotate(30deg);
+            }
+
+            11% {
+                transform: rotate(-28deg);
+            }
+
+            13% {
+                transform: rotate(26deg);
+            }
+
+            15% {
+                transform: rotate(-24deg);
+            }
+
+            17% {
+                transform: rotate(22deg);
+            }
+
+            19% {
+                transform: rotate(-20deg);
+            }
+
+            21% {
+                transform: rotate(18deg);
+            }
+
+            23% {
+                transform: rotate(-16deg);
+            }
+
+            25% {
+                transform: rotate(14deg);
+            }
+
+            27% {
+                transform: rotate(-12deg);
+            }
+
+            29% {
+                transform: rotate(10deg);
+            }
+
+            31% {
+                transform: rotate(-8deg);
+            }
+
+            33% {
+                transform: rotate(6deg);
+            }
+
+            35% {
+                transform: rotate(-4deg);
+            }
+
+            37% {
+                transform: rotate(2deg);
+            }
+
+            39% {
+                transform: rotate(-1deg);
+            }
+
+            41% {
+                transform: rotate(1deg);
+            }
+
+            43% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+
+        .dataTables_length {
+            margin-left: 15px;
+        }
+
+        .dataTables_length label {
+            white-space: nowrap !important;
+        }
+
+        table.dataTable thead th,
+        table.dataTable thead td {
+            padding: 10px 18px;
+            border-bottom: 1px solid #868686 !important;
+        }
+
+
+        span.select2.select2-container {
+            width: 100% !important;
+            min-width: 125px;
+        }
+
+
+        body {
+            padding-top: 56px;
+            font-size: 0.8rem !important;
+        }
+
+        .sticky-offset {
+            top: 56px;
+        }
+
+        #body-row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        #sidebar-container {
+            min-height: 100vh;
+
+            padding: 0;
+        }
+
+        /* Sidebar sizes when expanded and expanded */
+
+
+        /*\
+      * Restore Bootstrap 3 "hidden" utility classes.
+      \*/
+
+        /* Breakpoint XS */
+        @media (max-width: 575px) {
+
+            .hidden-xs-down,
+            .hidden-sm-down,
+            .hidden-md-down,
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-unless-sm,
+            .hidden-unless-md,
+            .hidden-unless-lg,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+        }
+
+        /* Breakpoint SM */
+        @media (min-width: 576px) and (max-width: 767px) {
+
+            .hidden-sm-down,
+            .hidden-md-down,
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-unless-xs,
+            .hidden-unless-md,
+            .hidden-unless-lg,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+        }
+
+        /* Breakpoint MD */
+        @media (min-width: 768px) and (max-width: 991px) {
+
+            .hidden-md-down,
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-md-up,
+            .hidden-unless-xs,
+            .hidden-unless-sm,
+            .hidden-unless-lg,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+        }
+
+        /* Breakpoint LG */
+        @media (min-width: 992px) and (max-width: 1199px) {
+
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-md-up,
+            .hidden-lg-up,
+            .hidden-unless-xs,
+            .hidden-unless-sm,
+            .hidden-unless-md,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+        }
+
+        /* Breakpoint XL */
+        @media (min-width: 1200px) {
+
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-md-up,
+            .hidden-lg-up,
+            .hidden-xl-up,
+            .hidden-unless-xs,
+            .hidden-unless-sm,
+            .hidden-unless-md,
+            .hidden-unless-lg {
+                display: none !important;
+            }
+        }
+
+        .module-name {
+            text-decoration: none !important;
+            color: #545454 !important;
+            font-size: 24px !important;
+            font-weight: 400 !important;
+        }
+
+        .table-image {
+            height: 50px;
+            padding: 4px;
+        }
+
+        .my-small-text {
+            font-size: 13px !important;
+        }
+
+        .no-border-tab {
+            border: none !important;
+            background-color: none !important;
+        }
+
+        .no-border-tab.active {
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            border-bottom-color: #fff !important;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.0)) !important;
+        }
+
+        .small-badge {
+            padding: 2px 6px;
+            font-size: 85% !important;
+            border-radius: 5% 50%;
+            font-weight: 600;
+        }
+
+
+
+        .table-seperated {
+            border-collapse: separate;
+        }
+
+        .table-seperated td,
+        th {
+            white-space: nowrap !important;
+            margin: 0px !important;
+        }
+
+
+
+        /* --------------- */
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+        :root {
+            --header-height: 5rem;
+            --nav-width: 95px;
+            --first-color: white;
+            --first-color-light: black;
+            --white-color: #F7F6FB;
+            --body-font: 'Nunito', sans-serif;
+            --normal-font-size: 1rem;
+            --z-fixed: 100
+        }
+
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box
+        }
+
+        body {
+            position: relative;
+            margin: var(--header-height) 0 0 0;
+            padding: 0 1rem;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            transition: .5s;
+            /* background-color: white !important; */
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .header {
+            width: 100%;
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: rgb(243, 243, 243);
+            z-index: var(--z-fixed);
+            transition: .5s;
+
+        }
+
+        .header_toggle {
+            color: var(--first-color);
+            font-size: 1.5rem;
+            cursor: pointer
+        }
+
+        .header_img {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden
+        }
+
+        .header_img img {
+            width: 40px
+        }
+
+        .l-navbar {
+            position: fixed;
+            top: 0;
+            left: -30%;
+            width: var(--nav-width);
+
+            background-color: var(--first-color);
+            padding: .5rem 1rem 0 0;
+            transition: .5s;
+            z-index: var(--z-fixed);
+            overflow-y: auto;
+            bottom: 0;
+            scrollbar-width: none !important;
+
+        }
+
+        #left-nav {
+            overflow-y: auto;
+            min-height: 100vh;
+            scrollbar-width: none !important;
+
+        }
+
+        .l-navbar::-webkit-scrollbar {
+            width: 5px;
+            /* width of the entire scrollbar */
+        }
+
+        .l-navbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            /* color of the tracking area */
+        }
+
+        .l-navbar::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* color of the scroll thumb */
+            border-radius: 20px;
+            /* roundness of the scroll thumb */
+            border: 1px solid rgba(0, 0, 0, 0.55);
+            /* creates padding around scroll thumb */
+        }
+
+        .nav.nav- {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden
+        }
+
+        .nav_logo,
+        .nav_link {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            column-gap: 1.2rem;
+            padding: 0rem 0 0rem 1.5rem;
+            text-decoration: none !important;
+        }
+
+        .nav_logo {
+            margin-bottom: 2rem
+        }
+
+        .nav_logo-icon {
+            font-size: 1.25rem;
+            color: var(--white-color)
+        }
+
+        .nav_logo-name {
+            color: black;
+            font-weight: 700
+        }
+
+        .nav_link {
+            position: relative;
+            color: var(--first-color-light);
+            margin-bottom: 1rem;
+            transition: .3s
+        }
+
+        .nav_link:hover {
+            text-decoration: none;
+            color: black;
+            background-color: rgba(6, 124, 75, 0.3);
+        }
+
+        .side-link {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            column-gap: 1.2rem;
+            padding: 0rem 0 0rem 0rem;
+            position: relative;
+            color: var(--first-color-light);
+            margin-bottom: 1rem;
+            transition: .3s
+        }
+
+        .side-link.active::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 5px;
+            height: 32px;
+            background-color: green
+        }
+
+        .side-link.active {
+            background-color: rgba(6, 124, 75, 0.3);
+        }
+
+        .nav_icon {
+            font-size: 1.25rem
+        }
+
+        .show- {
+            left: 0;
+            /* overflow-y:hidden; */
+        }
+
+        .body-pd {
+            padding-left: calc(var(--nav-width) + 1rem);
+            overflow-y: hidden;
+
+        }
+
+        .nav_link.active {
+            color: black
+        }
+
+        .nav_link.active::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 5px;
+            height: 32px;
+            background-color: green
+        }
+
+        .height-100 {
+            /* min-height: 105vh; */
+            margin-top: 9% !important;
+
+        }
+
+        .nav_link.active {
+            background-color: rgba(6, 124, 75, 0.3);
+        }
+
+        .has-search .form-control {
+            padding-left: 2.375rem;
+            border-radius: 26px;
+            width: 250%;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+            /* border-radius: 40%; */
+        }
+
+        @media screen and (min-width: 768px) {
+            body {
+                margin: calc(var(--header-height) + 1rem) 0 0 0;
+                padding-left: calc(var(--nav-width) + 2rem)
+            }
+
+            .header {
+                height: calc(var(--header-height) + 1rem);
+                padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+            }
+
+            .header_img {
+                width: 40px;
+                height: 40px
+            }
+
+            .header_img img {
+                width: 45px
+            }
+
+            .l-navbar {
+                left: 0;
+                padding: 1rem 1rem 0 0;
+                /* overflow-y:hidden; */
+            }
+
+            .show- {
+                width: calc(var(--nav-width) + 156px);
+                /* overflow-y:hidden; */
+            }
+
+            .body-pd {
+                padding-left: calc(var(--nav-width) + 188px);
+                /* overflow-y:hidden; */
+            }
+
+
+        }
+
+        @media (max-width: 575px) {
+
+            .hidden-xs-down,
+            .hidden-sm-down,
+            .hidden-md-down,
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-unless-sm,
+            .hidden-unless-md,
+            .hidden-unless-lg,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+
+            .main-section {
+                margin-top: 30% !important;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .has-search {
+                display: none;
+            }
+
+            .main-section {
+                margin-top: 25%;
+            }
+
+
+
+
+        }
+
+        @media (max-width: 1100px) {
+            .main-section {
+                margin-top: 20%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .branches-content {
+                display: block !important;
+            }
+
+            .part-one {
+                width: 100% !important;
+                margin-bottom: 5%;
+            }
+
+            .part-two {
+                width: 100% !important;
+                margin: 0px !important;
+            }
+
+            .header-top {
+                margin-top: 0% !important;
+            }
+        }
+
+        /* Breakpoint SM */
+        @media (min-width: 576px) and (max-width: 767px) {
+
+            .hidden-sm-down,
+            .hidden-md-down,
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-unless-xs,
+            .hidden-unless-md,
+            .hidden-unless-lg,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+
+        }
+
+        /* Breakpoint MD */
+        @media (min-width: 768px) and (max-width: 991px) {
+
+            .hidden-md-down,
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-md-up,
+            .hidden-unless-xs,
+            .hidden-unless-sm,
+            .hidden-unless-lg,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+
+
+        }
+
+        /* Breakpoint LG */
+        @media (min-width: 992px) and (max-width: 1199px) {
+
+            .hidden-lg-down,
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-md-up,
+            .hidden-lg-up,
+            .hidden-unless-xs,
+            .hidden-unless-sm,
+            .hidden-unless-md,
+            .hidden-unless-xl {
+                display: none !important;
+            }
+
+        }
+
+        /* Breakpoint XL */
+        @media (min-width: 1200px) {
+
+            .hidden-xl-down,
+            .hidden-xs-up,
+            .hidden-sm-up,
+            .hidden-md-up,
+            .hidden-lg-up,
+            .hidden-xl-up,
+            .hidden-unless-xs,
+            .hidden-unless-sm,
+            .hidden-unless-md,
+            .hidden-unless-lg {
+                display: none !important;
+            }
+
+
+
+
+        }
+    </style>
+
+    {% block styles %}
+    {% bootstrap_css %}
+
+
+    {% endblock %}
+
+    {% if dataTable %}
+    <link type="text/css" rel="stylesheet"
+        href="{% static 'assets/css/theme-default/libs/DataTables/jquery.dataTables.css' %} " />
+    <link href="{% static 'css/buttons.dataTables.min.css' %}" rel="stylesheet">
+    <style type="text/css" rel="stylesheet">
+        .table.table-hover tr {
+            transition: all 300ms ease-in-out;
+            color: inherit;
+            font-weight: inherit;
+            background-color: inherit;
+        }
+
+        .table.table-hover tr:hover {
+            background-color: rgb(209, 233, 206) !important;
+            cursor: pointer;
+            /* font-weight: 600; */
+            color: #353535;
+            /* transition: all 300ms ease-in-out; */
+        }
+
+        .table.table-hover tr:hover td {
+            border: none;
+        }
+
+
+
+        .mdi-menu-right {
+            position: absolute;
+            right: 0;
+            /* width:0; */
+            transition: 0.5s;
+            overflow: hidden;
+            font-size: 20px;
+        }
+
+        .count-icon {
+            position: absolute;
+            right: 0;
+            margin-right: 8%;
+            transition: 0.5s;
+            overflow: hidden;
+            font-size: 8px;
+            margin-top: 1% !important;
+            background-color: rgb(223, 218, 218);
+            color: black;
+        }
+
+        .rotate {
+            transform: rotate(90deg);
+        }
+
+        .sidebar-submenu {
+            background-color: #F0FFF0 !important;
+            margin-left: 0px !important;
+        }
+    </style>
+    {%endif%}
+
+
+
+
+</head>
+
+<body id="body-pd" class="body-pd">
+
+    <header class="header pt-5 body-pd" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 18px 20px -20px;" id="header">
+        <div class="header_toggle" style="display: flex;">
+            <i class='bx bx-menu' id="header-toggle" style="color: black !important;width: 30%;"></i>
+            <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback" style="font-size: 15px; color: black;"></span>
+                <input type="text" class="form-control" placeholder="Search for Bookings and Invoices...">
+            </div>
+        </div>
+        <div class="icon-header" style="display: flex;">
+            <a class="btn btn-sm btn-default mr-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;height:50% !important;background-color: rgba(6, 124, 75, 0.6)"><i class="mdi mdi-plus"></i> Add Booking</a>
+            <div class="header_img mr-4">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.l3rAckL5Qizjj2rbCdEHFgHaLH%26pid%3DApi&f=1&ipt=93cf217251424999836ffe68144f8771aaf6a112ddbb37918958844e92e5dc17&ipo=images"
+                    alt="">
+            </div>
+            <i class="mdi mdi-bell-ring text-danger mt-1" data-toggle="tooltip" title="Notifications"
+                style="font-size:20px !important"></i>
+
+        </div>
+
+    </header>
+    <div class="l-navbar show-" id="nav-bar">
+        <nav class="nav nav-" id="left-nav">
+            <div>
+                <div class="nav-upper mt-3">
+                    <center>
+                        <img src="{%static '/images/logo-h.png' %}" style="width: 80%;height: 80px !important" class=""
+                            alt="">
+                    </center>
+                </div>
+
+                <div class="nav_list pb-3 mb-5" style="margin-top: 20%;border-bottom: 1px solid black;">
+
+                    <a href="/" class="nav_link  {% if request.path == '/' %} active {%endif%}"> <i
+                            class='mdi mdi-view-dashboard-outline nav_icon'></i> <span class="nav_name">Dashboard</span>
+                    </a>
+                    <a href="" class="nav_link"> <i class='mdi mdi-account-box-multiple-outline nav_icon'></i> <span
+                            class="nav_name">Bookings</span>
+                    </a>
+                    <a href="" class="nav_link"> <i class='mdi mdi-file-tree-outline nav_icon'></i> <span
+                            class="nav_name">Rooms</span> </a>
+
+                    <a href="" class="nav_link"> <i class='mdi mdi-account-multiple-outline nav_icon'></i> <span
+                            class="nav_name">Customers</span></a>
+
+                    <a href="" class="nav_link"> <i class='mdi mdi-file-cog-outline nav_icon'></i> <span
+                            class="nav_name">Reports</span></a>
+
+                    <a href="" class="nav_link"> <i class='mdi mdi-bank-transfer nav_icon'></i> <span
+                            class="nav_name">Payments Methods</span> </a>
+                            
+                    <a href="" class="nav_link"> <i class='mdi mdi-file-chart-outline nav_icon'></i> <span
+                            class="nav_name">Invoices</span> </a>
+                    <a href="" class="nav_link"> <i class='mdi mdi-sitemap nav_icon'></i> <span
+                        class="nav_name">Inventory</span> </a>                            
+
+                </div>
+            </div>
+
+            <a href="" class="nav_link"> <i class='mdi mdi-cog-outline nav_icon'></i>
+                <span class="nav_name">Settings</span>
+            </a>
+            <a href="" class="nav_link"> <i class='mdi mdi-account-details nav_icon'></i>
+                <span class="nav_name">My Profile</span>
+            </a>
+            <a href="" class="nav_link"> <i class='mdi mdi-alert text-warning nav_icon'></i>
+                <span class="nav_name">Report Issue</span>
+            </a>
+            <a href="" class="nav_link"> <i class='mdi mdi-logout mdi-flip-h nav_icon'></i>
+                <span class="nav_name">Log Out</span></a>
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 pr-3">
+
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!--Container Main end-->
+
+
+</body>
+{{ redirect_to_login_immediately }}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %} "></script>
+<link href="{% static 'css/roboto.css' %}" rel="stylesheet" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+<style>
+    html,
+    body {
+        font-family: 'Roboto', sans-serif !important;
+        background-color: #f3f3f3 !important;
+    }
+</style>
+{%if dataTable %}
+
+<script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %} "></script>
+<script type="text/javascript" src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/buttons.flash.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jszip.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/pdfmake.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vfs_fonts.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/buttons.html5.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vfs_fonts_2.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/buttons.print.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/datatables-fixed-columns.min.js' %}"></script>
+{% endif %}
+<!-- <script src="{%static 'js/tinymce.js' %}" referrerpolicy="origin"></script> -->
+<!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ -->
+
+<script src="https://cdn.tiny.cloud/1/e6u420htylmuklxnohijxojjr0jc5fgrm2gh385ic4tsejmz/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
+
+
+{% if select2 %}
+<script src="{% static 'select2/select2.min.js' %}"></script>
+{% endif %}
+
+{% if tinymce %}
+<script>
+    tinymce.init({
+        selector: '.mytextarea',
+        plugins: "advlist,autolink,lists,link,image,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste",
+        // sizeselect | bold italic | fontselect |  fontsizeselect
+        toolbar1: 'undo redo | styleselect | fullscreen preview bold italic underline | fontselect fontsizeselect  | forecolor backcolor | alignleft alignright |aligncenter alignjustify | indent outdent | bullist numlist table',
+        toolbar2: 'link | image | media ',
+        toolbar3: 'visualblocks visualchars |charmap hr pagebreak nonbreaking anchor | code | lineheight ',
+
+
+        image_title: true,
+        /* enable automatic uploads of images represented by blob or data URIs*/
+        automatic_uploads: true,
+        /*
+          URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+          images_upload_url: 'postAcceptor.php',
+          here we add custom filepicker only to Image dialog
+        */
+        file_picker_types: 'image media',
+        /* and here's our custom image picker*/
+        file_picker_callback: function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            /*
+              Note: In modern browsers input[type="file"] is functional without
+              even adding it to the DOM, but that might not be the case in some older
+              or quirky browsers like IE, so you might want to add it to the DOM
+              just in case, and visually hide it. And do not forget do remove it
+              once you do not need it anymore.
+            */
+
+            input.onchange = function () {
+                var file = this.files[0];
+
+                var reader = new FileReader();
+                reader.onload = function () {
+                    /*
+                      Note: Now we need to register the blob in TinyMCEs image blob
+                      registry. In the next release this part hopefully won't be
+                      necessary, as we are looking to handle it internally.
+                    */
+                    var id = 'blobid' + (new Date()).getTime();
+                    var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                    var base64 = reader.result.split(',')[1];
+                    var blobInfo = blobCache.create(id, file, base64);
+                    blobCache.add(blobInfo);
+
+                    /* call the callback and populate the Title field with the file name */
+                    cb(blobInfo.blobUri(), {
+                        title: file.name
+                    });
+                };
+                reader.readAsDataURL(file);
+            };
+
+            input.click();
+        },
+        contextmenu: 'formats | link image',
+        menubar: true,
+        statusbar: true,
+    });
+</script>
+{% endif %}
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        // $('.floating-icon').toggleClass('mdi-menu-right mdi-menu-down')
+
+        $('#is-product').on('click', () => {
+            $('.is-product').toggleClass('rotate')
+        })
+        $('#is-cms').on('click', () => {
+            $('.is-cms').toggleClass('rotate')
+        })
+        $('#is-event').on('click', () => {
+            $('.is-event').toggleClass('rotate')
+        })
+        $('#is-form-product').on('click', () => {
+            $('.is-form-product').toggleClass('rotate')
+        })
+        $('#is-request-product').on('click', () => {
+            $('.is-request-product').toggleClass('rotate')
+        });
+        $('#is-loan').on('click', () => {
+            $('.is-loan').toggleClass('rotate')
+        });
+        $('#is-member').on('click', () => {
+            $('.is-member').toggleClass('rotate');
+        })
+        $('#header-toggle').on('click', () => {
+            document.getElementById('nav-bar').classList.toggle('show-')
+            // document.getElementById('header-toggle').classList.toggle('b')
+            document.getElementById('body-pd').classList.toggle('body-pd')
+            document.getElementById('header').classList.toggle('body-pd')
+
+        })
+        let getMemberWorklowBadgerValues = (callback) => {
+            $.ajax({
+                url: '/get/Member-Workflow/Counters',
+                method: 'GET',
+                success: (data) => {
+                    console.log(data);
+                    callback(data)
+                },
+                error: (data) => {
+                    console.log(data)
+                }
+            });
+        }
+        getMemberWorklowBadgerValues((data) => {
+            $('#member-menu').find('.in-progress-badger').empty();
+            $('#member-menu').find('.in-progress-badger').append(data['progress'])
+
+            $('#member-menu').find('.in-approval-badger').empty();
+            $('#member-menu').find('.in-approval-badger').append(data['approval'])
+
+            $('#member-menu').find('.in-ammendment-badger').empty();
+            $('#member-menu').find('.in-ammendment-badger').append(data['ammend'])
+        })
+        // $('#header-toggle').trigger('click');
+
+
+        /*===== LINK ACTIVE =====*/
+        const linkColor = document.querySelectorAll('.nav_link')
+
+        function colorLink() {
+            if (linkColor) {
+                linkColor.forEach(l => l.classList.remove('active'))
+                this.classList.add('active')
+            }
+        }
+        linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+        // Your code to run since DOM is loaded and ready
+    });
+
+
+    function timeConverter(dt) {
+        var a = new Date(dt);
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+        return time;
+    }
+
+    Date.prototype.today = function () {
+        return ((this.getDate() < 10) ? "0" : "") + this.getDate() + "/" + (((this.getMonth() + 1) < 10) ? "0" : "") + (this.getMonth() + 1) + "/" + this.getFullYear();
+    }
+
+    // For the time now
+    Date.prototype.timeNow = function () {
+        return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
+    }
+    $(function () {
+
+        if ($(window).width() < 760) {
+            $('#sidebar-container').addClass('hidden');
+        }
+
+        setTimeout(() => {
+            $('#message-section').slideUp(20);
+        }, 10000);
+
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        //Page Configuration Code
+        $('#body-row .collapse').collapse('hide');
+
+        // Collapse/Expand icon
+        $('#collapse-icon').addClass('fa-angle-double-left');
+
+        // Collapse click
+        $('[data-toggle=sidebar-colapse]').click(function () {
+            SidebarCollapse();
+        });
+
+        $('.modal').appendTo("body");
+
+        if ($(window).width() < 1201) {
+            $("#main-sidebar").addClass('close');
+        }
+
+
+        $('select').not('.hidden').each(function (i, e) {
+            if (!$(e).hasClass('no-select2')) {
+                $(e).select2({
+                    placeHolder: $(e).attr('placeholder') || $(e).data('placeholder')
+                });
+                $(e).attr('style', 'width: 100%');
+            }
+        })
+        {% if dataTable %}
+        $('.table-responsive .table.table-condensed.table-sm').not('.server-side').each(function (i, e) {
+            var lengthMenu = $(e).data('menutext') ?? [10, 25, 50, 75, 100];
+            var fixedCols = $(e).data('fixedcls');
+            var $fCOps = {
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', { extend: 'excelHtml5', footer: true }, 'pdf', 'print'
+                ],
+                "order": [],
+                "language": {
+                    // "lengthMenu": lengthMenu,
+                    "search": '<i class="fa fa-search"></i>',
+                    "paginate": {
+                        "previous": '<i class="fa fa-angle-left"></i>',
+                        "next": '<i class="fa fa-angle-right"></i>'
+                    }
+                }
+            };
+
+            $(e).DataTable($fCOps);
+        });
+        {% endif %}
+
+
+
+
+
+    });
+</script>
+{% block script %}
+{% endblock %}
+
+</html>
