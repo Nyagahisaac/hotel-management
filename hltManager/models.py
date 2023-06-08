@@ -48,12 +48,20 @@ class UserRoles(models.Model):
     def __str__(self):
         return f'{self.user_id.first_name} {self.user_id.last_name}'
     
+class ConfigurationTypes(models.Model):
+    '''Manages Configuration Types'''    
+    name = models.CharField(max_length=255,null=False,blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, related_name="created_by", on_delete=models.CASCADE,null=True)
+    
 class Configurations(models.Model):
     '''
     Manage system configurations / settings
     '''
     key = models.CharField(max_length=255,null=False,blank=False)
     value = models.CharField(max_length=255,null=False,blank=False)
+    config_type = models.ForeignKey(ConfigurationTypes, on_delete=models.CASCADE,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     

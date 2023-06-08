@@ -8,6 +8,17 @@ from datetime import datetime
 
 from ..models import RoomsHeader,RoomDetails
 
+def index(request):
+    '''Serve room types template'''
+    roomTypes = RoomsHeader.objects.filter(deleted_at__isnull=True)
+    return render(request,'rooms/index.html',{"roomTypes":roomTypes,"dataTable":True})
+
+def show(request,id):
+    '''serve rooms data'''
+    rooms = RoomDetails.objects.filter(room_type_id=id)
+    room_type = RoomsHeader.objects.get(id=id)
+    return render(request,'rooms/show.html',{"room_type":room_type,"dataTable":True,"rooms":rooms})
+
 def maintainRoomTypes(request):
     '''Maintains Room Types Data'''
     
