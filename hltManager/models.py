@@ -31,6 +31,8 @@ class Profile(models.Model):
     deleted_at = models.DateTimeField(auto_now=False, auto_now_add=False,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+    gender_id =  models.CharField(max_length=10,null=True,blank=False)
+    id_number =  models.CharField(max_length=10,null=True,blank=False)
     
     def __str__(self):
         return f'{self.user_id.first_name} {self.user_id.last_name}'
@@ -53,7 +55,7 @@ class ConfigurationTypes(models.Model):
     name = models.CharField(max_length=255,null=False,blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, related_name="created_by", on_delete=models.CASCADE,null=True)
+    created_by = models.ForeignKey(User, related_name="type_created_by", on_delete=models.CASCADE,null=True)
     
 class Configurations(models.Model):
     '''
