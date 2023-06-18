@@ -10,8 +10,8 @@
 {% block content %}
 <main>
 
-    <p style="font-size:20px"><b><i class="mdi mdi-cogs"></i> Inventory Category</b>
-        <span class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#add-category" data-action="add"><i class="mdi mdi-plus"></i> Add Category</span>
+    <p style="font-size:20px"><b><i class="mdi mdi-cogs"></i> {{header.name}} Inventory Category</b>
+        <span class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#add-item" data-action="add"><i class="mdi mdi-plus"></i> Add Item</span>
     </p>
 
     <div class="card border-0">
@@ -23,14 +23,26 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Code</th>
+                            <th>Total Stock</th>
+                            <th>Used Stock</th>
+                            <th>Available Stock</th>
+                            <th>Created By</th>
+                            <th>Created At</th>
+                            
+
                         </tr>
                     </thead>
                     <tbody>
                         {% for data in configs %}
                         <tr>
-                            <td><span class="btn btn-sm btn-default text-primary" data-target="#add-category" data-toggle="modal" data-action="edit" data-id="{{data.id}}" data-name="{{data.name}}" data-code="{{data.code}}"><i class="mdi mdi-pencil"></i></span></td>
+                            <td><span class="btn btn-sm btn-default text-primary" data-target="#add-category" data-toggle="modal" data-action="edit" data-record="{{data}}"><i class="mdi mdi-pencil"></i></span></td>
                             <td>{{data.name}}</td>
                             <td>{{data.code}}</td>
+                            <td>{{data.total_stock}}</td>
+                            <td>{{data.used_stock}}</td>
+                            <td></td>
+                            <td>{{data.created_by.first_name}} {{data.created_by.last_name}}</td>
+                            <td>{{data.created_at}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

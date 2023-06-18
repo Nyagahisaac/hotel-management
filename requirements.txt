@@ -1,6 +1,9 @@
 asgiref==3.7.2
+beautifulsoup4==4.12.2
 Django==4.2.1
+django-bootstrap4==23.1
 psycopg2==2.9.6
 python-decouple==3.8
+soupsieve==2.4.1
 sqlparse==0.4.4
 typing-extensions==4.6.3
