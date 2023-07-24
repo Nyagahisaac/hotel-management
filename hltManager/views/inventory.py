@@ -7,7 +7,7 @@ from django.utils.timezone import datetime
 from datetime import datetime
 from ..models import InventoryHeader,InventoryItems,Configurations
 
-def index(request):
+def inventory(request):
     '''Serve the main inventory Categories'''
     headers = InventoryHeader.objects.filter(deleted_at__isnull = True)
     return render(request,'inventory/index.html',{"headers":headers})

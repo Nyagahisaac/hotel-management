@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from ...models import *
+from ..models import *
 from django.contrib.auth.models import User,Group,Permission
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -10,7 +10,7 @@ from django.core.files.storage import FileSystemStorage
 
 def login_user_data(request):
     if request.method == 'GET':
-        return render(request,'login/index.html')
+        return render(request,'auth/login.html')
     user = authenticate(username=request.POST['username'], password=request.POST['password'])
     if user is not None:
         if user.is_staff == False:

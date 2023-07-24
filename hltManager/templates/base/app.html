@@ -1,4 +1,4 @@
-{%extends 'navbar/base.html'%}
+{%extends 'base/base.html'%}
 {% load bootstrap4 %}
 {% load static %}
 {% block module-name %}
@@ -71,7 +71,7 @@
 
         <ol class="breadcrumb text-muted" style="border-radius: 26px;font-weight: 500;font-size: 13px;">
             {% for item in items%}
-            <a href="{{item.url}}" class="breadcrumb-item" style="color: black;text-decoration: none;"><i
+            <a href="{{hotel.url}}" class="breadcrumb-item" style="color: black;text-decoration: none;"><i
                     class="mdi {{item.class}}"></i> {{item.app_name}}</a>
 
             {% endfor %}

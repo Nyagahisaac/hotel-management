@@ -1,35 +1,6 @@
-<!-- {%extends 'base/app.html'%} {% load bootstrap4 %} {% block header %} -->
+{%extends 'base/app.html'%} {% load bootstrap4 %} {% block header %}
 <title>Bookings</title>
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-/>
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-/>
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link
-  href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
-  rel=" stylesheet"
-/>
-<link
-  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"
-  rel="stylesheet"
-/>
 <style>
   .animated {
     -webkit-animation-duration: 1s;
@@ -76,11 +47,14 @@
     display: flex;
     justify-content: space-between;
   }
+  input:hover {
+    box-shadow: 2px 4px 8px 4px #eee;
+  }
 </style>
 
-<!-- {% endblock %} {% block content %} -->
+{% endblock %} {% block content %}
 
-<div class="container w-full md:w-5/5 xl:w-5/5 mx-auto px-2">
+<div class="mx-auto px-2">
   <div class="head">
     <!--Title-->
     <h1
@@ -93,9 +67,18 @@
     <div class="mt-5">
       <button
         onclick="openModal()"
-        class="bg-blue-500 text-white p-2 rounded text-2xl font-bold"
+        class="text-white p-2 rounded text-2xl font-bold"
       >
-        <i class="material-icons">&#xE147;</i>
+        <a
+          class="btn btn-sm btn-default mr-4"
+          style="
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height: 50% !important;
+            color: white;
+            background-color: rgba(6, 124, 75, 0.6);
+          "
+          ><i class="mdi mdi-plus"></i> Add Booking</a
+        >
       </button>
     </div>
   </div>
@@ -104,11 +87,11 @@
     style="background: rgba(0, 0, 0, 0.7)"
   >
     <div
-      class="border border-teal-500 shadow-lg modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      class="border border-teal-500 container bg-white md:max-w-md mx-auto rounded z-50 overflow-y-auto"
     >
-      <div class="modal-content py-4 text-left px-6">
+      <div class="container py-4 text-left px-6">
         <!--Body-->
-        <div class="my-5">
+        <div class="m">
           <div class="flex justify-between">
             <div class="text-center"></div>
             <div
@@ -133,17 +116,91 @@
               </svg>
             </div>
           </div>
-          <div class="container mx-auto py-2 mt-5 px-2">
+          <div class="mx-auto py-2 px-2">
             <h1 class="text-2xl font-bold text-center">Add Booking</h1>
 
-            <form class="w-full max-w-xl mx-auto bg-white rounded-md shadow-md">
+            <form class="w-full max-w-xl mx-auto bg-white rounded-md">
+              {% csrf_token %} {{ form.as_p }}
               <div class="row">
-                <div class="mb-4">
-                  <div class="col">
+                <div class="col-6 mt-2">
+                  <div class="mb-4">
                     <label
                       class="block text-gray-700 text-sm font-bold mb-2"
                       for="name"
                       >Username</label
+                    >
+                    <input
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                      type="text"
+                      id="name"
+                      placeholder="..."
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
+                      class="block text-gray-700 text-sm font-bold mb-2"
+                      for="name"
+                      >Room type</label
+                    >
+                    <input
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                      type="text"
+                      id="name"
+                      name="room_type_id"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="col-6 mt-2">
+                  <div class="mb-4">
+                    <label
+                      class="block text-gray-700 text-sm font-bold mb-2"
+                      for="name"
+                      >No. of people</label
+                    >
+                    <input
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                      type="text"
+                      id="number_people"
+                      name="number_people"
+                      placeholder=""
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
+                      class="block text-gray-700 text-sm font-bold mb-2"
+                      for="name"
+                      >Check in date</label
+                    >
+                    <input
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                      type="text"
+                      id="check_in_date"
+                      name="check_in_date"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="mb-1">
+                  <label
+                    class="block text-gray-700 text-sm font-bold mb-2"
+                    for="name"
+                    >Arrival
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                    type="date"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div class="col-6 mt-4">
+                  <div class="mb-4">
+                    <label
+                      class="block text-gray-700 text-sm font-bold mb-2"
+                      for="name"
+                      >Payment method</label
                     >
                     <input
                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
@@ -154,61 +211,21 @@
                     />
                   </div>
                 </div>
-                <div class="col mb-4">
-                  <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    for="name"
-                    >Room type</label
-                  >
-                  <input
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    for="name"
-                    >No. of people</label
-                  >
-                  <input
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    for="name"
-                    >Check in date</label
-                  >
-                  <input
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    for="name"
-                    >Arrival </label
-                  >
-                  <input
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                    type="date"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                  />
+                <div class="col-6 mt-4">
+                  <div class="mb-4">
+                    <label
+                      class="block text-gray-700 text-sm font-bold mb-2"
+                      for="name"
+                      >Receptionist</label
+                    >
+                    <input
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="John Doe"
+                    />
+                  </div>
                 </div>
                 <div class="mb-4">
                   <label
@@ -219,34 +236,6 @@
                   <input
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                     type="date"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    for="name"
-                    >Payment method</label
-                  >
-                  <input
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    for="name"
-                    >Receptionist</label
-                  >
-                  <input
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                    type="text"
                     id="name"
                     name="name"
                     placeholder="John Doe"
@@ -265,37 +254,8 @@
       </div>
     </div>
   </div>
-  <script>
-    const modal = document.querySelector(".main-modal");
-    const closeButton = document.querySelectorAll(".modal-close");
 
-    const modalClose = () => {
-      modal.classList.remove("fadeIn");
-      modal.classList.add("fadeOut");
-      setTimeout(() => {
-        modal.style.display = "none";
-      }, 500);
-    };
-
-    const openModal = () => {
-      modal.classList.remove("fadeOut");
-      modal.classList.add("fadeIn");
-      modal.style.display = "flex";
-    };
-
-    for (let i = 0; i < closeButton.length; i++) {
-      const elements = closeButton[i];
-
-      elements.onclick = (e) => modalClose();
-
-      modal.style.display = "none";
-
-      window.onclick = function (event) {
-        if (event.target == modal) modalClose();
-      };
-    }
-  </script>
-  <section class="container px-4 mx-auto">
+  <section class="px-4 mx-auto w-full">
     <div class="flex flex-col">
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -303,7 +263,7 @@
             class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg"
           >
             <table
-              class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+              class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 p-2"
             >
               <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
@@ -352,7 +312,7 @@
                     scope="col"
                     class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                   >
-                    Customer
+                    Date
                   </th>
 
                   <th
@@ -411,7 +371,7 @@
                 </tr>
               </thead>
               <tbody
-                class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
+                class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900 p-4"
               >
                 <tr>
                   <td
@@ -887,3 +847,35 @@
     </div>
   </section>
 </div>
+{% block script %}
+<script>
+  const modal = document.querySelector(".main-modal");
+  const closeButton = document.querySelectorAll(".modal-close");
+
+  const modalClose = () => {
+    modal.classList.remove("fadeIn");
+    modal.classList.add("fadeOut");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 500);
+  };
+
+  const openModal = () => {
+    modal.classList.remove("fadeOut");
+    modal.classList.add("fadeIn");
+    modal.style.display = "flex";
+  };
+
+  for (let i = 0; i < closeButton.length; i++) {
+    const elements = closeButton[i];
+
+    elements.onclick = (e) => modalClose();
+
+    modal.style.display = "none";
+
+    window.onclick = function (event) {
+      if (event.target == modal) modalClose();
+    };
+  }
+</script>
+{% endblock %} {% endblock %}

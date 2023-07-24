@@ -35,6 +35,36 @@
       href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"
       rel="stylesheet"
     />
+    <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+/>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link
+  href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+  rel=" stylesheet"
+/>
+<link
+  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"
+  rel="stylesheet"
+/>
 
     {% if title %}
     <title>The Greenbrier - {{title}}</title>
@@ -1048,7 +1078,7 @@
             </div>
         </div>
         <div class="icon-header" style="display: flex;">
-            <a class="btn btn-sm btn-default mr-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;height:50% !important;background-color: rgba(6, 124, 75, 0.6)"><i class="mdi mdi-plus"></i> Add Booking</a>
+            <!-- <a class="btn btn-sm btn-default mr-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;height:50% !important;background-color: rgba(6, 124, 75, 0.6)"><i class="mdi mdi-plus"></i> Add Booking</a> -->
             <div class="header_img mr-4">
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.l3rAckL5Qizjj2rbCdEHFgHaLH%26pid%3DApi&f=1&ipt=93cf217251424999836ffe68144f8771aaf6a112ddbb37918958844e92e5dc17&ipo=images"
                     alt="">
@@ -1069,15 +1099,15 @@
                     </center>
                 </div>
 
-                <div class="nav_list pb-3 mb-5" style="margin-top: 20%;border-bottom: 1px solid black;">
+                <div class="nav_list pb-3 mb-5 vh-50" style="margin-top: 20%;border-bottom: 1px solid black;">
 
                     <a href="/" class="nav_link  {% if request.path == '/' %} active {%endif%}"> <i
                             class='mdi mdi-view-dashboard-outline nav_icon'></i> <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="" class="nav_link"> <i class='mdi mdi-account-box-multiple-outline nav_icon'></i> <span
+                    <a href="{% url 'hotel:bookings' %}" class="nav_link"> <i class='mdi mdi-account-box-multiple-outline nav_icon'></i> <span
                             class="nav_name">Bookings</span>
                     </a>
-                    <a href="" class="nav_link"> <i class='mdi mdi-file-tree-outline nav_icon'></i> <span
+                    <a href="{% url 'hotel:rooms' %}" class="nav_link"> <i class='mdi mdi-file-tree-outline nav_icon'></i> <span
                             class="nav_name">Rooms</span> </a>
 
                     <a href="" class="nav_link"> <i class='mdi mdi-account-multiple-outline nav_icon'></i> <span
@@ -1091,23 +1121,25 @@
                             
                     <a href="" class="nav_link"> <i class='mdi mdi-file-chart-outline nav_icon'></i> <span
                             class="nav_name">Invoices</span> </a>
-                    <a href="" class="nav_link"> <i class='mdi mdi-sitemap nav_icon'></i> <span
+                    <a href="{% url 'hotel:inventory' %}" class="nav_link"> <i class='mdi mdi-sitemap nav_icon'></i> <span
                         class="nav_name">Inventory</span> </a>                            
 
                 </div>
+                <div class="div">
+    
+                <a href="" class="nav_link"> <i class='mdi mdi-cog-outline nav_icon'></i>
+                    <span class="nav_name">Settings</span>
+                </a>
+                <a href="" class="nav_link"> <i class='mdi mdi-account-details nav_icon'></i>
+                    <span class="nav_name">My Profile</span>
+                </a>
+                <a href="" class="nav_link"> <i class='mdi mdi-alert text-warning nav_icon'></i>
+                    <span class="nav_name">Report Issue</span>
+                </a>
             </div>
-
-            <a href="" class="nav_link"> <i class='mdi mdi-cog-outline nav_icon'></i>
-                <span class="nav_name">Settings</span>
-            </a>
-            <a href="" class="nav_link"> <i class='mdi mdi-account-details nav_icon'></i>
-                <span class="nav_name">My Profile</span>
-            </a>
-            <a href="" class="nav_link"> <i class='mdi mdi-alert text-warning nav_icon'></i>
-                <span class="nav_name">Report Issue</span>
-            </a>
-            <a href="" class="nav_link"> <i class='mdi mdi-logout mdi-flip-h nav_icon'></i>
-                <span class="nav_name">Log Out</span></a>
+        </div>
+        <a href="{% url 'hotel:login' %}" class="nav_link mb-5"> <i class='mdi mdi-logout mdi-flip-h nav_icon'></i>
+            <span class="nav_name">Log Out</span></a>
         </nav>
     </div>
     <!--Container Main start-->

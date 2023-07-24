@@ -1,6 +1,5 @@
-<!-- {%extends 'base/app.html'%}
 {% load bootstrap4 %}
-{% block header %} -->
+{% block header %}
 <link
 rel="stylesheet"
 href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
@@ -26,9 +25,8 @@ rel="stylesheet"
 <style>
    
 </style>
-<!-- {% endblock %}
+{% endblock %}
 
-{% block content %} -->
 <div class="container w-full md:w-3/5 xl:w-5/5 mx-auto px-2 align-middle ">
     <!--Title-->
     <h1
@@ -61,18 +59,21 @@ rel="stylesheet"
                 <div class="text-blueGray-400 text-center mb-3 font-bold">
                   <small>Or sign in with credentials</small>
                 </div>
-                <form>
+                <form method="post">
+                  {% csrf_token %}
                   <div class="relative w-full mb-3">
-                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Email</label><input type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email">
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Username</label>
+                    <input type="text"  name="username" id="username" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="username" required>
                   </div>
                   <div class="relative w-full mb-3">
-                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Password</label><input type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password">
+                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Password</label>
+                    <input type="password" name="password" id="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password" required>
                   </div>
                   <div>
                     <label class="inline-flex items-center cursor-pointer"><input id="customCheckLogin" type="checkbox" class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"><span class="ml-2 text-sm font-semibold text-indigo-600">Remember me</span></label>
                   </div>
                   <div class="text-center mt-6">
-                    <button class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button"> Sign In </button>
+                    <button class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="submit"> Sign In </button>
                   </div>
                 </form>
               </div>
@@ -92,4 +93,3 @@ rel="stylesheet"
         </section>
     
   </div>
-<!-- {% endblock %} -->
